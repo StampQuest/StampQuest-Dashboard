@@ -1,0 +1,67 @@
+/* Grayscale Design palette: https://grayscale.design/app?lums=93.87,82.28,68.67,49.10,40.20,32.78,13.29,9.31,6.30,2.62,1.30,0.52&palettes=%23fd8696,%2396a4fd,%23FCEA74,%233ab87e&filters=0%7C0,0%7C0,0%7C0,0%7C0&names=red,blue,secondary,primary&labels=,,, */
+:root {
+  --gray-50: #f8f8f8;
+  --gray-100: #eaeaea;
+  --gray-200: #d8d8d8;
+  --gray-300: #bababa;
+  --gray-400: #aaaaaa;
+  --gray-500: #9b9b9b;
+  --gray-600: #666666;
+  --gray-700: #565656;
+  --gray-800: #474747;
+  --gray-900: #2d2d2d;
+  --gray-1000: #1e1e1e;
+  --gray-1100: #101010;
+
+  --red-50: #fff6f7;
+  --red-100: #ffe4e8;
+  --red-200: #fecbd2;
+  --red-300: #fda0ac;
+  --red-400: #fd8696;
+  --red-500: #fd6b7f;
+  --red-600: #ce031e;
+  --red-700: #b0031a;
+  --red-800: #930216;
+  --red-900: #61020e;
+  --red-1000: #45010a;
+  --red-1100: #2a0106;
+
+  --blue-50: #f7f8ff;
+  --blue-100: #e6e9ff;
+  --blue-200: #d0d6fe;
+  --blue-300: #abb6fd;
+  --blue-400: #96a4fd;
+  --blue-500: #8393fd;
+  --blue-600: #344ffb;
+  --blue-700: #1332fb;
+  --blue-800: #0421dc;
+  --blue-900: #031691;
+  --blue-1000: #020f65;
+  --blue-1100: #01093b;
+
+  --secondary-50: #fef9d8;
+  --secondary-100: #fcec81;
+  --secondary-200: #f7d705;
+  --secondary-300: #d5b905;
+  --secondary-400: #c3aa04;
+  --secondary-500: #b29b04;
+  --secondary-600: #756603;
+  --secondary-700: #635602;
+  --secondary-800: #524702;
+  --secondary-900: #342d01;
+  --secondary-1000: #231e01;
+  --secondary-1100: #131000;
+
+  --primary-50: #f0faf5;
+  --primary-100: #d3f1e3;
+  --primary-200: #ace5ca;
+  --primary-300: #63ce9c;
+  --primary-400: #3cc083;
+  --primary-500: #37af77;
+  --primary-600: #24734e;
+  --primary-700: #1f6142;
+  --primary-800: #195137;
+  --primary-900: #103323;
+  --primary-1000: #0b2217;
+  --primary-1100: #06130d;
+}
