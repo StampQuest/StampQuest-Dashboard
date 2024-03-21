@@ -8,6 +8,7 @@ const Register = () => {
 
   const onSubmit = useCallback(() => {
     const { firstName, lastName, email, password, confirmPassword } = getValues('auth.register');
+    console.log(getValues('auth.register'));
     if (password === confirmPassword) {
       registerUser(firstName, lastName, email, password).then((res) => {});
     }
@@ -16,7 +17,7 @@ const Register = () => {
 
   return (
     <div className="min-w-full flex flex-col justify-center items-center" style={{ minHeight: '100vh' }}>
-      <Card style={{ height: '25%', width: '15%', padding: '1rem', marginBottom: '1rem' }}>
+      <Card style={{ height: '25%', width: '350px', padding: '1rem', marginBottom: '1rem' }}>
         <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
           <h2>StampQuest</h2>
         </CardHeader>
