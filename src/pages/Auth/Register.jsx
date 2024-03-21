@@ -1,22 +1,22 @@
 import { Controller, useForm } from 'react-hook-form';
 import { Button, Card, CardBody, CardHeader, Input, Link } from '@nextui-org/react';
 import { useCallback } from 'react';
-import { registerUser } from '../../services/auth.js';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useStore from '../../stores/useUserStore.js';
+
+const useSignUp = () => useStore((state) => state.signUp);
 
 const Register = () => {
   const { control, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
+  const signUp = useSignUp();
 
   const onSubmit = useCallback(() => {
     const { firstName, lastName, email, password, checkPassword } = getValues('auth.register');
-    console.log(getValues('auth.register'));
-    console.log(password, checkPassword, password === checkPassword);
     if (password === checkPassword) {
-      registerUser(firstName, lastName, email, password)
-        .then((res) => {
-          console.log(res);
+      signUp(firstName, lastName, email, password)
+        .then(() => {
           toast.success('Vous êtes bien enregistré');
           navigate('/auth/sign-in');
         })
@@ -27,7 +27,6 @@ const Register = () => {
     } else {
       toast.error('Les mots de passe ne sont pas identique');
     }
-    console.log('submit');
   }, [getValues]);
 
   return (

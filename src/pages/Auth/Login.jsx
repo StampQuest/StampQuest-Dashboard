@@ -4,17 +4,20 @@ import { useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { Button, Card, CardBody, CardHeader, Input, Link } from '@nextui-org/react';
 import { loginUser } from '../../services/auth.js';
+import useStore from '../../stores/useUserStore.js';
+
+const useSignIn = () => useStore((state) => state.signIn);
 
 const Login = () => {
   const { control, handleSubmit, getValues } = useForm();
   const navigate = useNavigate();
+  const signIn = useSignIn();
 
   const onSubmit = useCallback(() => {
     const { email, password } = getValues('auth.login');
-    loginUser(email, password)
+    signIn(email, password)
       .then((res) => {
         if (res.status === 201) {
-          localStorage.setItem('access_token', res.data.access_token);
           toast.success('Vous êtes bien connecté');
           navigate('/');
         }

@@ -1,6 +1,5 @@
 import {
   Avatar,
-  Divider,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -10,7 +9,12 @@ import {
   NavbarContent,
 } from '@nextui-org/react';
 import { SearchIcon } from 'lucide-react';
+import useStore from '../stores/useUserStore.js';
+
+const useSignOut = () => useStore((state) => state.signOut);
 const Nav = () => {
+  const signOut = useSignOut();
+
   return (
     <Navbar as="div" maxWidth="full" className="bg-default-100 shadow-md ">
       <NavbarContent as="div">
@@ -54,7 +58,7 @@ const Nav = () => {
             <DropdownItem key="help_and_feedback" showDivider>
               Help & Feedback
             </DropdownItem>
-            <DropdownItem key="logout" color="danger" className="text-danger">
+            <DropdownItem key="logout" color="danger" className="text-danger" onClick={signOut}>
               Log Out
             </DropdownItem>
           </DropdownMenu>
