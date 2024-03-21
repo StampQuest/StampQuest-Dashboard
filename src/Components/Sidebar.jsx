@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import '../style/sidebar.scss';
-import { Book, Home, Map, Ticket } from 'lucide-react';
+import { Book, Home, Ticket } from 'lucide-react';
 import { Divider } from '@nextui-org/react';
 
 const sidebarNavItems = [
