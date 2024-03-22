@@ -34,10 +34,8 @@ const userStore = (set, get) => ({
     return registerUser(firstname, lastname, email, password).then((res) => Promise.resolve(res.data));
   },
 
-  signIn: (email, password) => {
-    return loginUser(email, password).then((res) => {
-      console.log(res);
-      console.log(get().user);
+  signIn: async (email, password) => {
+    return await loginUser(email, password).then(async (res) => {
       set(
         produce((state) => {
           state.user = {
@@ -50,6 +48,7 @@ const userStore = (set, get) => ({
         false,
         'user/signIn',
       );
+      await get().fetchUser(res.data.hashId);
       return Promise.resolve(res);
     });
   },
@@ -65,7 +64,6 @@ const userStore = (set, get) => ({
   },
 
   fetchUser: async () => {
-    console.log(get().user);
     return await getUserDetails(get().user.hashId).then((res) => {
       const { company, email, firstname, lastname, point, role } = res.data;
       set(

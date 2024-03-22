@@ -6,6 +6,7 @@ import './style/index.scss';
 import PrivateLayout from './layout/PrivateLayout.jsx';
 import AuthLayout from './layout/AuthLayout.jsx';
 import { Toaster } from 'react-hot-toast';
+import Activity from './pages/Activity/Activity.jsx';
 
 const Home = loadable(() => import('./pages/Home.jsx'), { fallback: <Loading /> });
 const Login = loadable(() => import('./pages/Auth/Login.jsx'), { fallback: <Loading /> });
@@ -27,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<PrivateLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/activity" element={<Home />} />
+            <Route path="/activity" element={<Activity />} />
             <Route path="/book" element={<Home />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>

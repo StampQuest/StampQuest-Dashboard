@@ -12,9 +12,11 @@ import { SearchIcon } from 'lucide-react';
 import useStore from '../stores/useUserStore.js';
 
 const useSignOut = () => useStore((state) => state.signOut);
+const useGetUser = () => useStore((state) => state.user);
 const Nav = () => {
   const signOut = useSignOut();
-
+  const user = useGetUser();
+  console.log(user);
   return (
     <Navbar as="div" maxWidth="full" className="bg-default-100 shadow-md ">
       <NavbarContent as="div">
@@ -47,8 +49,12 @@ const Nav = () => {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat" disabledKeys={['profile']}>
             <DropdownItem isReadOnly key="profile" className="h-14 gap-2 opacity-100" showDivider>
-              <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold" style={{ color: '#3cc083' }}>
+                {user.lastname} {user.firstname}
+              </p>
+              <p className="font-semibold" style={{ color: '#9b9b9b' }}>
+                {user.email}
+              </p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>
@@ -59,7 +65,7 @@ const Nav = () => {
               Help & Feedback
             </DropdownItem>
             <DropdownItem key="logout" color="danger" className="text-danger" onClick={signOut}>
-              Log Out
+              Déconnexion
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>

@@ -48,7 +48,7 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <div className="sidebar__logo">Animate</div>
+      <div className="sidebar__logo">StampQuest</div>
       <Divider className=" w-[80%] bg-default-100" as="div" style={{ margin: '0 auto' }} />
       <div ref={sidebarRef} className="sidebar__menu" style={{ marginTop: '1rem', marginBottom: '1rem' }}>
         <div
