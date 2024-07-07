@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import loadable from '@loadable/component';
 import Loading from './layout/Loading.jsx';
-import './style/default.css';
-import './style/index.scss';
 import PrivateLayout from './layout/PrivateLayout.jsx';
 import AuthLayout from './layout/AuthLayout.jsx';
 import { Toaster } from 'react-hot-toast';

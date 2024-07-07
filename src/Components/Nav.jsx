@@ -1,13 +1,3 @@
-import {
-  Avatar,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Input,
-  Navbar,
-  NavbarContent,
-} from '@nextui-org/react';
 import { SearchIcon } from 'lucide-react';
 import useStore from '../stores/useUserStore.js';
 
@@ -20,7 +10,7 @@ const Nav = () => {
   return (
     <Navbar as="div" maxWidth="full" className="bg-default-100 shadow-md ">
       <NavbarContent as="div">
-        <Input
+        <InputText
           classNames={{
             base: 'max-w-full sm:max-w-[10rem] h-10',
             mainWrapper: 'h-full',

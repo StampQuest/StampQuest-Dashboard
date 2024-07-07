@@ -1,7 +1,6 @@
 import React from 'react';
 import Header from './Header.jsx';
 import styled from 'styled-components';
-import { Tab, Tabs } from '@nextui-org/react';
 import loadable from '@loadable/component';
 import Loading from '../../layout/Loading.jsx';
 

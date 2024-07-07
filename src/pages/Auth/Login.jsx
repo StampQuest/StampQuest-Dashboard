@@ -2,7 +2,6 @@ import { Controller, useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useCallback } from 'react';
 import toast from 'react-hot-toast';
-import { Button, Card, CardBody, CardHeader, Input, Link } from '@nextui-org/react';
 import { loginUser } from '../../services/auth.js';
 import useStore from '../../stores/useUserStore.js';
 
