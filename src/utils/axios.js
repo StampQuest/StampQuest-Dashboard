@@ -4,7 +4,7 @@ import CryptoJS from 'crypto-js';
 const k = CryptoJS.SHA256(`auth ${Math.PI.toString(16)}`).toString(CryptoJS.enc.Base64);
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://localhost:8080/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },

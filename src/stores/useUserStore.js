@@ -98,4 +98,5 @@ const useStore = create(
 );
 
 export const useIsAuth = () => useStore((state) => state?.user?.token !== null);
+export const useIsAdmin = () => useStore((state) => state?.user?.role === 1);
 export default useStore;

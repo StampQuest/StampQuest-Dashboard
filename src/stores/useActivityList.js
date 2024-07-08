@@ -1,6 +1,6 @@
 import { devtools, subscribeWithSelector } from 'zustand/middleware';
 import { create } from 'zustand';
-import { getAllListActivity } from '../services/activity.js';
+import { createActivity, getAllListActivity } from '../services/activity.js';
 import { produce } from 'immer';
 
 const store = (set, get) => ({
@@ -41,9 +41,18 @@ const store = (set, get) => ({
       'activityList/paginationChanged',
     );
   },
+
+  craeteActivity: async (name, description, category) => {
+    await createActivity(name, description, category).then((res) => {
+      get().getActivityList();
+    });
+  },
+
 });
 
 const useStore = create(devtools(subscribeWithSelector(store), { name: 'activityList' }));
 export const useGetListActivity = () => useStore((state) => state.getActivityList);
+export const useActivity = () => useStore((state) => state.activityList);
+export const useCreateActivity = () => useStore((state) => state.craeteActivity);
 
 export default useStore;

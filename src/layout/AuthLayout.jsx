@@ -8,7 +8,9 @@ const AuthLayout = () => {
 
   useEffect(() => {
     if (isAuth) navigate('/');
+
   }, [isAuth]);
+
   return (
     <div>
       <Outlet />

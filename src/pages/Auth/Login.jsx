@@ -4,6 +4,7 @@ import { useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { loginUser } from '../../services/auth.js';
 import useStore from '../../stores/useUserStore.js';
+import { Button, Card, CardBody, CardHeader, Input, CardLink } from 'reactstrap';
 
 const useSignIn = () => useStore((state) => state.signIn);
 
@@ -27,9 +28,9 @@ const Login = () => {
   }, [getValues]);
 
   return (
-    <div className="min-w-full flex flex-col justify-center items-center" style={{ minHeight: '100vh' }}>
-      <Card style={{ height: '25%', width: '350px', padding: '1rem', marginBottom: '1rem' }}>
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
+    <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <Card style={{ height: '25%', width: '350px', marginBottom: '1rem' }}>
+        <CardHeader className="bg-transparent">
           <h2>StampQuest</h2>
         </CardHeader>
         <CardBody>
@@ -38,17 +39,17 @@ const Login = () => {
               <Controller
                 name="auth.login.email"
                 control={control}
-                render={({ field }) => <Input type="email" label="Email" {...field} isRequired />}
+                render={({ field }) => <Input placeholder="Email" type="email" label="Email" {...field} isRequired />}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <Controller
                 name="auth.login.password"
                 control={control}
-                render={({ field }) => <Input type="password" label="Mot de passe" {...field} isRequired />}
+                render={({ field }) => <Input placeholder="Mot de passe" type="password" label="Mot de passe" {...field} isRequired />}
               />
             </div>
-            <div className="flex justify-end">
+            <div className="d-flex justify-content-end">
               <Button type="submit" color="primary">
                 Se connecter
               </Button>
@@ -57,9 +58,9 @@ const Login = () => {
         </CardBody>
       </Card>
       Tu n'as pas de compte ?
-      <Link href="/auth/sign-up" color="primary">
+      <CardLink href="/auth/sign-up" color="primary">
         Inscrit toi
-      </Link>
+      </CardLink>
     </div>
   );
 };

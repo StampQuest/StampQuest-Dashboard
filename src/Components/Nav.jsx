@@ -1,65 +1,52 @@
-import { SearchIcon } from 'lucide-react';
 import useStore from '../stores/useUserStore.js';
+import { Button, DropdownItem, DropdownMenu, DropdownToggle, Input, Navbar, UncontrolledDropdown } from 'reactstrap';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+
+//styled div to make the avatar
+const StyledAvatar = styled.div`
+    width: 48px;
+    height: 48px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-size: cover;
+    background-image: url(https://i.pravatar.cc);
+`;
 
 const useSignOut = () => useStore((state) => state.signOut);
 const useGetUser = () => useStore((state) => state.user);
 const Nav = () => {
+
   const signOut = useSignOut();
+  const navigate = useNavigate();
   const user = useGetUser();
-  console.log(user);
+
   return (
-    <Navbar as="div" maxWidth="full" className="bg-default-100 shadow-md ">
-      <NavbarContent as="div">
-        <InputText
-          classNames={{
-            base: 'max-w-full sm:max-w-[10rem] h-10',
-            mainWrapper: 'h-full',
-            input: 'text-small',
-            inputWrapper:
-              'h-full font-normal text-default-400 bg-white dark:bg-default-500/20 data-[hover=true]:bg-white group-data-[focus=true]:bg-white ',
-          }}
-          placeholder="Rechercher une activité..."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        />
-      </NavbarContent>
-      <NavbarContent as="div" className="items-center" justify="end">
-        <Dropdown placement="bottom-end">
-          <DropdownTrigger>
-            <Avatar
-              isBordered
-              as="button"
-              className="transition-transform"
-              color="primary"
-              name="Jason Hughes"
-              size="md"
-              src="https://i.pravatar.cc"
-            />
-          </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat" disabledKeys={['profile']}>
-            <DropdownItem isReadOnly key="profile" className="h-14 gap-2 opacity-100" showDivider>
-              <p className="font-semibold" style={{ color: '#3cc083' }}>
-                {user.lastname} {user.firstname}
-              </p>
-              <p className="font-semibold" style={{ color: '#9b9b9b' }}>
-                {user.email}
-              </p>
-            </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback" showDivider>
-              Help & Feedback
-            </DropdownItem>
-            <DropdownItem key="logout" color="danger" className="text-danger" onClick={signOut}>
-              Déconnexion
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </NavbarContent>
+    <Navbar className="bg-success">
+      <div className="text-white"> {user.company.name} - {user.lastname} {user.firstname}  </div>
+      <Input type="search" placeholder="Rechercher une activité..." size="sm" className="w-25" />
+      <Button color="primary" className="btn btn-primary" onClick={() => navigate('/')}>
+        Retour à la page d'accueil
+      </Button>
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav>
+          <StyledAvatar />
+        </DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem disabled>
+            <p className="font-semibold" style={{ color: '#3cc083' }}>
+              {user.lastname} {user.firstname}
+            </p>
+            <p className="font-semibold" style={{ color: '#9b9b9b' }}>
+              {user.email}
+            </p>
+          </DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem className="text-danger" onClick={signOut}>
+            Déconnexion
+          </DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
     </Navbar>
   );
 };

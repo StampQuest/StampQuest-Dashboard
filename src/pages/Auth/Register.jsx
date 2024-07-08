@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useStore from '../../stores/useUserStore.js';
+import { Button, Card, CardBody, CardHeader, CardLink, Input } from 'reactstrap';
 
 const useSignUp = () => useStore((state) => state.signUp);
 
@@ -29,37 +30,40 @@ const Register = () => {
   }, [getValues]);
 
   return (
-    <div className="min-w-full flex flex-col justify-center items-center" style={{ minHeight: '100vh' }}>
-      <Card style={{ height: '25%', width: '350px', padding: '1rem', marginBottom: '1rem' }}>
-        <CardHeader className="pb-0 pt-2 px-4 flex-col items-center">
+    <div className="w-100 d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+      <Card style={{ height: '25%', width: '350px', marginBottom: '1rem' }}>
+        <CardHeader className="p-4 bg-transparent">
           <h2>StampQuest</h2>
         </CardHeader>
         <CardBody>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex" style={{ marginBottom: '1rem' }}>
+            <div className="d-flex" style={{ marginBottom: '1rem' }}>
               <Controller
                 name="auth.register.lastName"
                 control={control}
-                render={({ field }) => <Input type="text" label="Nom" {...field} className="mr-2" isRequired />}
+                render={({ field }) => <Input type="text" placeholder="Nom"  {...field} className="me-2"
+                                              isRequired />}
               />
               <Controller
                 name="auth.register.firstName"
                 control={control}
-                render={({ field }) => <Input type="text" label="Prénom" {...field} className="ml-2" isRequired />}
+                render={({ field }) => <Input type="text" placeholder="Prénom"  {...field}
+                                              className="ml-2" isRequired />}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <Controller
                 name="auth.register.email"
                 control={control}
-                render={({ field }) => <Input type="email" label="Email" {...field} isRequired />}
+                render={({ field }) => <Input placeholder="Email" type="email"  {...field} isRequired />}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
               <Controller
                 name="auth.register.password"
                 control={control}
-                render={({ field }) => <Input type="password" label="Mot de passe" {...field} isRequired />}
+                render={({ field }) => <Input placeholder="Mot de passe" type="password"  {...field}
+                                              isRequired />}
               />
             </div>
             <div style={{ marginBottom: '1rem' }}>
@@ -67,11 +71,11 @@ const Register = () => {
                 name="auth.register.checkPassword"
                 control={control}
                 render={({ field }) => (
-                  <Input type="password" label="Confirmer le mot de passe" {...field} isRequired />
+                  <Input type="password" placeholder="Confirmer le mot de passe" {...field} isRequired />
                 )}
               />
             </div>
-            <div className="flex justify-end">
+            <div className="d-flex justify-content-end">
               <Button type="submit" color="primary">
                 S'inscrire
               </Button>
@@ -80,9 +84,9 @@ const Register = () => {
         </CardBody>
       </Card>
       Tu es déjà inscrit ?
-      <Link href="/auth/sign-in" color="primary">
+      <CardLink href="/auth/sign-in" color="primary">
         Connecte toi
-      </Link>
+      </CardLink>
     </div>
   );
 };
